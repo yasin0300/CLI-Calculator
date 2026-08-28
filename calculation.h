@@ -58,6 +58,25 @@ void divi()
    
 }
 
+void modulo()
+{
+    std::cout << "Modulo" << std::endl
+              << "Enter 2 numbers\n";
+    double num1, num2;
+    num1 = validateInput();
+    num2 = validateInput();
+    if (num2 == 0)
+    {
+        std::cout << "You cannot divide by 0" << std::endl;
+    }
+    else
+    {
+        ans = fmod(num1, num2);
+        std::cout << "= " << ans << std::endl;
+    }
+    
+}
+
 void exponential()
 {
     std::cout << "Exponential" << std::endl;

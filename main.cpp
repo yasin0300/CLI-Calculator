@@ -17,13 +17,14 @@ int main()
         std::cout << "\n"
                   << "What kind of calculation would you like to perform??" << std::endl
                   << "\n"
-                  << "1(Addition)  "
-                  << "2(Subtraction)  "
-                  << "3(Multiplication)  " << std::endl
-                  << "4(Division)  "
-                  << "5(Exponential)  "
-                  << "6(Square Root)" << std::endl
-                  << "7(Logarithm)" << std::endl;
+                  << "1(Addition)     "
+                  << "2(Subtraction)     "
+                  << "3(Multiplication)" << std::endl
+                  << "4(Division)     "
+                  << "5(Modulo)          "
+                  << "6(Exponential)"    << std::endl
+                  << "7(Square Root)  "
+                  << "8(Logarithm)"        << std::endl;
 
         int x = validateInput();
         switch (x)
@@ -50,15 +51,20 @@ int main()
         }
         case 5:
         {
-            exponential();
+            modulo();
             break;
         }
         case 6:
         {
-            squareRoot();
+            exponential();
             break;
         }
         case 7:
+        {
+            squareRoot();
+            break;
+        }
+        case 8:
         {
             logarithm();
             break;
