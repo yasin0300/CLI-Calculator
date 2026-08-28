@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <cmath>
+#include <numbers>
 
 double validateInput()
 {
@@ -14,10 +15,10 @@ double validateInput()
 
         if (input == "e" || input == "E")
         {
-            return M_E;
+            return std::numbers::e;
         }
         else if(input == "pi" || input == "Pi" || input == "PI"){
-            return M_PI;
+            return std::numbers::pi;
         }
         try
         {
