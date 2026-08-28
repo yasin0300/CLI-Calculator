@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cmath>
 #include <numbers>
-
+#include "global.h"
 double validateInput()
 {
     std::string input;
@@ -17,8 +17,13 @@ double validateInput()
         {
             return std::numbers::e;
         }
-        else if(input == "pi" || input == "Pi" || input == "PI"){
+        else if (input == "pi" || input == "Pi" || input == "PI")
+        {
             return std::numbers::pi;
+        }
+        else if (input == "ans" || input == "Ans" || input == "ANS")
+        {
+            return ans;
         }
         try
         {

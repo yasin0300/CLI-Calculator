@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cmath>
+#include "global.h"
 
 void addi(){
     std::cout << "Addition" << std::endl
@@ -9,7 +10,8 @@ void addi(){
     double num1, num2;
     num1 = validateInput();
     num2 = validateInput();
-    std::cout << "= " << num1 + num2 << std::endl;
+    ans = num1 + num2;
+    std::cout << "= " << ans << std::endl;
     
 }
 
@@ -20,7 +22,8 @@ void subt()
     double num1, num2;
     num1 = validateInput();
     num2 = validateInput();
-    std::cout << "= " << num1 - num2 << std::endl;
+    ans = num1 - num2;
+    std::cout << "= " << ans << std::endl;
     
 }
 
@@ -31,7 +34,8 @@ void multi()
     double num1, num2;
     num1 = validateInput();
     num2 = validateInput();
-    std::cout << "= " << num1 * num2 << std::endl;
+    ans = num1 * num2;
+    std::cout << "= " << ans << std::endl;
     
 }
 
@@ -48,8 +52,8 @@ void divi()
     }
     else
     {
-
-        std::cout << "= " << num1 / num2 << std::endl;
+        ans = num1 / num2;
+        std::cout << "= " << ans << std::endl;
     }
    
 }
@@ -62,8 +66,8 @@ void exponential()
     num1 = validateInput();
     std::cout << "Enter your exponent" << std::endl;
     num2 = validateInput();
-    std::cout << "= " << pow(num1, num2)
-              << "\n";
+    ans = pow(num1, num2);
+    std::cout << "= " << ans << "\n";
    
 }
 
@@ -79,7 +83,8 @@ void squareRoot()
     }
     else
     {
-        std::cout << "= " << sqrt(num) << std::endl;
+        ans = sqrt(num);
+        std::cout << "= " << ans << std::endl;
     }
     
 }
@@ -102,7 +107,8 @@ void logarithm()
         else
         {
             valid = true;
-            std::cout << "= " << log(num2) / log(num1) << std::endl;
+            ans = log(num2) / log(num1);
+            std::cout << "= " << ans << std::endl;
         }
     }
     
