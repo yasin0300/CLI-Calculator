@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <vector>
 
 #include "input.h"
 #include "calculation.h"
@@ -17,62 +18,46 @@ int main()
         std::cout << "\n"
                   << "What kind of calculation would you like to perform??" << std::endl
                   << "\n"
-                  << "1(Addition)     "
-                  << "2(Subtraction)     "
-                  << "3(Multiplication)" << std::endl
-                  << "4(Division)     "
-                  << "5(Modulo)          "
-                  << "6(Exponential)"    << std::endl
-                  << "7(Square Root)  "
-                  << "8(Logarithm)"        << std::endl;
+                  << "1(Arithmetic operations)  "
+                  << "2(Modulo)" << std::endl
+                  << "3(Exponential)            "
+                  << "4(Square Root)  " << std::endl
+                  << "5(Logarithm)       " << std::endl;
 
         int x = validateInput();
         switch (x)
         {
         case 1:
         {
-            addi();
+            arithmeticOperations();
             break;
         }
         case 2:
         {
-            subt();
+            modulo();
             break;
         }
         case 3:
         {
-            multi();
+            exponential();
             break;
         }
         case 4:
         {
-            divi();
+            squareRoot();
             break;
         }
         case 5:
         {
-            modulo();
-            break;
-        }
-        case 6:
-        {
-            exponential();
-            break;
-        }
-        case 7:
-        {
-            squareRoot();
-            break;
-        }
-        case 8:
-        {
             logarithm();
             break;
         }
+
         default:
             std::cout << "Invalid input" << std::endl;
             break;
         }
+
         std::cout << "Continue(1) exit(0)" << std::endl;
         running = validateInput();
     }
