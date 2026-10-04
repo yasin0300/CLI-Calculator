@@ -5,6 +5,7 @@
 
 #include "input.h"
 #include "calculation.h"
+#include "arithmeticOperations.h"
 #include "global.h"
 
 double ans = 0.0;
