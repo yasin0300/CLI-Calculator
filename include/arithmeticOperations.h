@@ -5,6 +5,7 @@
 #include <string>
 #include <cmath>
 #include <cctype>
+
 #include "global.h"
 
 void arithmeticOperations()
@@ -17,18 +18,18 @@ void arithmeticOperations()
     std::vector<double> digits;
     std::vector<char> operators;
 
-    for (char zahl : input)
+    for (char dig : input)
     {
-        if (isdigit(zahl))
+        if (isdigit(dig) || dig == '.')
         {
-            currentNumber += zahl;
+            currentNumber += dig;
         }
-        else if (zahl == '+' || zahl == '-' || zahl == '*' || zahl == '/')
+        else if (dig == '+' || dig == '-' || dig == '*' || dig == '/')
         {
             digits.push_back(stod(currentNumber));
             currentNumber.clear();
 
-            operators.push_back(zahl);
+            operators.push_back(dig);
         }
     }
     if (!currentNumber.empty())
@@ -36,18 +37,38 @@ void arithmeticOperations()
 
         digits.push_back(stod(currentNumber));
     }
-    double result;
-    std::cout << std::endl;
-    for (double d : digits)
+
+    if (operators.empty())
     {
-        std::cout << d << " ";
+        std::cout << "Please enter a operator\n";
     }
-    std::cout << "" << std::endl;
-    for (char o : operators)
+    else
     {
-        std::cout << o;
+        double result;
+
+        for (double dig : digits)
+        {
+            int i = 0;
+            if (operators[i] == '+')
+            {
+                result = result + dig;
+            }
+            else if (operators[i] == '-')
+            {
+                result = result - dig;
+            }
+            else if (operators[i] == '*')
+            {
+                result = result * dig;
+            }
+            else if (operators[i] == '/')
+            {
+                result = result / dig;
+            }
+            i++;
+        }
+
+        std::cout << std::endl;
+        std::cout << "=" << result << std::endl;
     }
-    std::cout << std::endl;
-    std::cout << result;
-    std::cout << std::endl;
 }
