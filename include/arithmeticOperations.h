@@ -4,74 +4,50 @@
 #include <vector>
 #include <string>
 #include <cmath>
-
+#include <cctype>
 #include "global.h"
 
 void arithmeticOperations()
 {
-    std::cout << "ArithmeticOperations" << std::endl
-              << "Enter expression e.g. 4+5/6" << std::endl;
 
-    while (true)
+    std::string input;
+    std::cin.ignore();
+    std::getline(std::cin, input);
+    std::string currentNumber;
+    std::vector<double> digits;
+    std::vector<char> operators;
+
+    for (char zahl : input)
     {
-        std::vector<double> digits;
-        std::vector<char> operators;
-        std::string input;
-
-        std::getline(std::cin, input);
-        std::string currenetNumber;
-
-        for (char character : input)
+        if (isdigit(zahl))
         {
-
-            if (std::isdigit(character) || character == '.' || character == ',')
-            {
-                currenetNumber += character == ',' ? '.' : character;
-            }
-            else if (character == '+' || character == '-' || character == '*' || character == '/')
-            {
-                if (currenetNumber.empty())
-                {
-                    std::cout << "Invalid expression" << '\n';
-                    break;
-                }
-                digits.push_back(std::stod(currenetNumber));
-                currenetNumber.clear();
-                operators.push_back(character);
-            }
+            currentNumber += zahl;
         }
-
-        if (!currenetNumber.empty())
+        else if (zahl == '+' || zahl == '-' || zahl == '*' || zahl == '/')
         {
-            digits.push_back(std::stod(currenetNumber));
-        }
+            digits.push_back(stod(currentNumber));
+            currentNumber.clear();
 
-        if (!digits.empty())
-        {
-            double result = digits[0];
-
-            for (std::size_t i = 0; i < operators.size(); ++i)
-            {
-                if (operators[i] == '+')
-                    result += digits[i + 1];
-                else if (operators[i] == '-')
-                    result -= digits[i + 1];
-                else if (operators[i] == '*')
-                    result *= digits[i + 1];
-                else if (operators[i] == '/')
-                {
-                    if (digits[i + 1] == 0)
-                    {
-                        std::cout << "You cannot divide by 0" << '\n';
-                        return;
-                    }
-                    result /= digits[i + 1];
-                }
-            }
-
-            ans = result;
-            std::cout << "= " << result << '\n';
-            return;
+            operators.push_back(zahl);
         }
     }
+    if (!currentNumber.empty())
+    {
+
+        digits.push_back(stod(currentNumber));
+    }
+    double result;
+    std::cout << std::endl;
+    for (double d : digits)
+    {
+        std::cout << d << " ";
+    }
+    std::cout << "" << std::endl;
+    for (char o : operators)
+    {
+        std::cout << o;
+    }
+    std::cout << std::endl;
+    std::cout << result;
+    std::cout << std::endl;
 }
