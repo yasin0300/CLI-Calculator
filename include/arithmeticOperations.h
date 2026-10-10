@@ -86,7 +86,7 @@ void arithmeticOperations()
         {
             if (digits[i + 1] == 0)
             {
-                std::cout << "You can't divide by 0" << std::endl;
+                std::cout << "Math Error" << std::endl;
                 return;
             }
 
