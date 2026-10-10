@@ -4,71 +4,95 @@
 #include <vector>
 #include <string>
 #include <cmath>
+#include <algorithm>
 #include <cctype>
 
 #include "global.h"
 
 void arithmeticOperations()
 {
-
     std::string input;
     std::cin.ignore();
     std::getline(std::cin, input);
+
     std::string currentNumber;
     std::vector<double> digits;
     std::vector<char> operators;
 
     for (char dig : input)
     {
-        if (isdigit(dig) || dig == '.')
+        if (isdigit(dig))
         {
+            currentNumber += dig;
+        }
+        else if (dig == '.')
+        {
+            if (std::ranges::find(currentNumber, '.') != currentNumber.end())
+            {
+                std::cout << "Syntax Error" << std::endl;
+                return;
+            }
+
             currentNumber += dig;
         }
         else if (dig == '+' || dig == '-' || dig == '*' || dig == '/')
         {
-            digits.push_back(stod(currentNumber));
+            if (currentNumber.empty())
+            {
+                std::cout << "Syntax Error" << std::endl;
+                return;
+            }
+
+            digits.push_back(std::stod(currentNumber));
             currentNumber.clear();
 
             operators.push_back(dig);
         }
+        else
+        {
+            std::cout << "Syntax Error" << std::endl;
+            return;
+        }
     }
+
     if (!currentNumber.empty())
     {
-
-        digits.push_back(stod(currentNumber));
+        digits.push_back(std::stod(currentNumber));
     }
 
     if (operators.empty())
     {
-        std::cout << "Please enter a operator\n";
+        std::cout << "Please enter an operator\n";
+        return;
     }
-    else
+
+    double result = digits[0];
+
+    for (int i = 0; i < operators.size(); i++)
     {
-        double result;
-
-        for (double dig : digits)
+        if (operators[i] == '+')
         {
-            int i = 0;
-            if (operators[i] == '+')
-            {
-                result = result + dig;
-            }
-            else if (operators[i] == '-')
-            {
-                result = result - dig;
-            }
-            else if (operators[i] == '*')
-            {
-                result = result * dig;
-            }
-            else if (operators[i] == '/')
-            {
-                result = result / dig;
-            }
-            i++;
+            result += digits[i + 1];
         }
+        else if (operators[i] == '-')
+        {
+            result -= digits[i + 1];
+        }
+        else if (operators[i] == '*')
+        {
+            result *= digits[i + 1];
+        }
+        else if (operators[i] == '/')
+        {
+            if (digits[i + 1] == 0)
+            {
+                std::cout << "You can't divide by 0" << std::endl;
+                return;
+            }
 
-        std::cout << std::endl;
-        std::cout << "=" << result << std::endl;
+            result /= digits[i + 1];
+        }
     }
+
+    std::cout << "=" << result << std::endl;
 }
