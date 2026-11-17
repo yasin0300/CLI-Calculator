@@ -25,7 +25,7 @@ int main()
                   << "4(Square Root)  " << std::endl
                   << "5(Logarithm)       " << std::endl;
 
-        int x = validateInput();
+        unsigned int x = validateInput();
         switch (x)
         {
         case 1:

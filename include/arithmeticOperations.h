@@ -66,33 +66,40 @@ void arithmeticOperations()
         return;
     }
 
-    double result = digits[0];
+    double result = 0;
 
     for (int i = 0; i < operators.size(); i++)
     {
-        if (operators[i] == '+')
+        if (operators[i] == '*')
         {
-            result += digits[i + 1];
-        }
-        else if (operators[i] == '-')
-        {
-            result -= digits[i + 1];
-        }
-        else if (operators[i] == '*')
-        {
-            result *= digits[i + 1];
+            digits[i] = digits[i] * digits[i + 1];
+            digits.erase(digits.begin() + i + 1);
+            operators.erase(operators.begin() + i);
         }
         else if (operators[i] == '/')
         {
-            if (digits[i + 1] == 0)
-            {
-                std::cout << "Math Error" << std::endl;
-                return;
-            }
-
-            result /= digits[i + 1];
+            digits[i] = digits[i] / digits[i + 1];
+            digits.erase(digits.begin() + i + 1);
+            operators.erase(operators.begin() + i);
         }
     }
 
+    while (!operators.empty())
+    {
+
+        if (operators[0] == '+')
+        {
+            digits[0] = digits[0] + digits[1];
+            digits.erase(digits.begin() + 1);
+            operators.erase(operators.begin());
+        }
+        else if (operators[0] == '-')
+        {
+            digits[0] = digits[0] - digits[1];
+            digits.erase(digits.begin() + 1);
+            operators.erase(operators.begin());
+        }
+    }
+    result = digits[0];
     std::cout << "=" << result << std::endl;
 }
