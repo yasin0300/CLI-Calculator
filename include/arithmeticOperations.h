@@ -11,6 +11,7 @@
 
 void arithmeticOperations()
 {
+    std::cout << "Arithmetic operations" << std::endl;
     std::string input;
     std::cin.ignore();
     std::getline(std::cin, input);
@@ -68,7 +69,7 @@ void arithmeticOperations()
 
     double result = 0;
 
-    for (int i = 0; i < operators.size(); i++)
+    for (int i = 0; i < operators.size();)
     {
         if (operators[i] == '*')
         {
@@ -78,9 +79,16 @@ void arithmeticOperations()
         }
         else if (operators[i] == '/')
         {
+            if(digits[i+1] == 0){
+                std::cout << "You cant divide by 0" << std::endl;
+                return;
+            }
             digits[i] = digits[i] / digits[i + 1];
             digits.erase(digits.begin() + i + 1);
             operators.erase(operators.begin() + i);
+        }
+        else{
+            i++;
         }
     }
 
@@ -101,5 +109,6 @@ void arithmeticOperations()
         }
     }
     result = digits[0];
+    ans = result;
     std::cout << "=" << result << std::endl;
 }
