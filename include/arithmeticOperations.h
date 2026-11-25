@@ -80,7 +80,7 @@ void arithmeticOperations()
         else if (operators[i] == '/')
         {
             if(digits[i+1] == 0){
-                std::cout << "You cant divide by 0" << std::endl;
+                std::cout << "You cant divide by 0\n" << std::endl;
                 return;
             }
             digits[i] = digits[i] / digits[i + 1];
